@@ -1,5 +1,8 @@
+<script setup>
+    import Layout from '../Layouts/Layout.vue';
+</script>
 <template>
-    <div>
-        <h1 class="text-5xl font-bold text-gray-600">Hello</h1>
-    </div>
+    <Layout>
+        <h1>Welcome Home Page</h1>
+    </Layout>
 </template>
