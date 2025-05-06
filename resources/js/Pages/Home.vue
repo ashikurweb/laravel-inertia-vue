@@ -1,8 +1,7 @@
 <script setup>
-    import Layout from '../Layouts/Layout.vue';
+import Layout from '../Layouts/Layout.vue';
+defineOptions({ layout: Layout });
 </script>
 <template>
-    <Layout>
-        <h1>Welcome Home Page</h1>
-    </Layout>
+    <h1>Welcome Home Page</h1>
 </template>

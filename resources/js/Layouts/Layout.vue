@@ -7,10 +7,10 @@
           <div class="text-2xl font-bold text-gray-800">YourLogo</div>
           <!-- Navigation Links -->
           <ul class="hidden md:flex space-x-8">
-            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition">Home</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition">About</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition">Services</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition">Contact</a></li>
+            <li><a href="/" class="text-gray-600 hover:text-gray-900 transition">Home</a></li>
+            <li><a href="/about" class="text-gray-600 hover:text-gray-900 transition">About</a></li>
+            <li><a href="/services" class="text-gray-600 hover:text-gray-900 transition">Services</a></li>
+            <li><a href="/contact" class="text-gray-600 hover:text-gray-900 transition">Contact</a></li>
           </ul>
           <!-- Mobile Menu Button -->
           <button class="md:hidden focus:outline-none">
