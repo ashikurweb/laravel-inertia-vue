@@ -7,6 +7,4 @@ Route::get('/', function () {
     return Inertia::render('Home');
 });
 
-Route::get('/about', function () {
-    return inertia('About', ['name' => 'Ashikur Rahman']);
-});
+Route::inertia('/about', 'About', ['name' => 'Sabikun Nahar Priya']);
