@@ -17,10 +17,13 @@ import { Link, Head } from '@inertiajs/vue3';
         <!-- Navigation Links -->
         <ul class="hidden md:flex space-x-8">
           <li>
-            <Link href="/" class="text-gray-600 hover:text-gray-900 transition">Home</Link>
+            <Link :href="route('home')" class="text-gray-600 hover:text-gray-900 transition">Home</Link>
           </li>
           <li>
-            <Link href="/about" class="text-gray-600 hover:text-gray-900 transition">About</Link>
+            <Link :href="route('about')" class="text-gray-600 hover:text-gray-900 transition">About</Link>
+          </li>
+          <li>
+            <Link :href="route('scroll.prevention')" class="text-gray-600 hover:text-gray-900 transition">Scroll Prevention</Link>
           </li>
         </ul>
         <!-- Mobile Menu Button -->
