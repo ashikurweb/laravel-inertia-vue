@@ -1,7 +1,5 @@
-<script setup>
-import Layout from '../Layouts/Layout.vue';
-defineOptions({ layout: Layout });
-</script>
+<script setup></script>
 <template>
-    <h1>Welcome Home Page</h1>
+    <Head title="Home page" />
+    <h1 class="text-5xl font-bold text-gray-600">Welcome Home Page</h1>
 </template>
