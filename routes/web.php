@@ -11,6 +11,6 @@ Route::get('/', function () {
 Route::get('/about', function () {
     sleep(1); 
     return Inertia::render('About', [
-        'name' => 'Sabikun Nahar Priya',
+        'name' => 'Jeffery Way',
     ]);
 });
