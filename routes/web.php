@@ -14,3 +14,8 @@ Route::get('/about', function () {
         'name' => 'Jeffery Way',
     ]);
 })->name('about');
+
+Route::get('/scroll-prevention', function () {
+    sleep(1);
+    return Inertia::render('ScrollPrevention');
+})->name('scroll.prevention');

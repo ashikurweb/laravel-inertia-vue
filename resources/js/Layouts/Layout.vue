@@ -22,6 +22,9 @@ import { Link, Head } from '@inertiajs/vue3';
           <li>
             <Link :href="route('about')" class="text-gray-600 hover:text-gray-900 transition">About</Link>
           </li>
+          <li>
+            <Link :href="route('scroll.prevention')" class="text-gray-600 hover:text-gray-900 transition">Scroll Prevention</Link>
+          </li>
         </ul>
         <!-- Mobile Menu Button -->
         <button class="md:hidden focus:outline-none">
