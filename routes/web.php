@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 Route::inertia('/', 'Home')->name('home');
-Route::inertia('/register', 'Auth/Register')->name('register');
+
+Route::controller(RegisterController::class)->group(function () {
+   Route::get('register', 'create')->name('register');
+   Route::post('register', 'store'); 
+});
