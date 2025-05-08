@@ -1,35 +1,40 @@
 
-<template>
 
+<template>
   <Head>
-    <title>Welcome to Inertia App with Tailwind CSS and Laravel</title>
-    <meta head-key="description" name="description" content="This is a default description" />
+    <title>My App</title>
   </Head>
-  <div class="min-h-screen flex flex-col">
-    <!-- Header / Navbar -->
-    <header class="bg-white shadow-md">
-      <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-        <!-- Logo -->
-        <div class="text-2xl font-bold text-gray-800">YourLogo</div>
-        <!-- Navigation Links -->
-        <ul class="hidden md:flex space-x-8">
-          <li>
-            <Link :href="route('home')" class="text-gray-600 hover:text-gray-900 transition">Home</Link>
-          </li>
-        </ul>
-        <!-- Mobile Menu Button -->
+  <header class="bg-white shadow-sm">
+    <div class="container mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
+      <!-- Logo + Brand -->
+      <div class="flex items-center space-x-3">
+        <Link :href="route('home')" class="flex items-center space-x-2">
+          <img src="https://www.logoai.com/oss/icons/2021/10/27/NTs7EMHlHtbJE3B.png" alt="Logo" class="w-10 h-10 rounded-full" />
+        </Link>
+      </div>
+
+      <!-- Nav Links -->
+      <nav class="hidden md:flex items-center space-x-6">
+        <Link :href="route('home')" class="text-sm text-gray-600 hover:text-primary transition">Home</Link>
+      </nav>
+
+      <!-- Action Button -->
+      <div class="flex items-center space-x-3">
+        <Link :href="route('register')" class="hidden md:inline-flex items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-500 transition">
+          <i class="fa-solid fa-user-tie mr-2"></i>
+          My Account
+        </Link>
+        <!-- Mobile Menu Icon -->
         <button class="md:hidden focus:outline-none">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
           </svg>
         </button>
-      </nav>
-    </header>
+      </div>
+    </div>
+  </header>
 
-    <!-- Main Content Slot -->
-    <main class="flex-1 container mx-auto px-6 py-10">
-      <slot />
-    </main>
-  </div>
+  <main class="container mx-auto max-w-7xl px-6 py-4">
+    <slot />
+  </main>
 </template>

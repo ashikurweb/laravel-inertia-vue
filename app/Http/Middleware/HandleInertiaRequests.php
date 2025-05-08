@@ -37,7 +37,6 @@ class HandleInertiaRequests extends Middleware
     {
         return [
             ...parent::share($request),
-            'auth.name' => 'Ashikur Rahman' ?? null
         ];
     }
 }
