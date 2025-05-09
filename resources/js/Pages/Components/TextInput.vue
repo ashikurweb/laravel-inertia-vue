@@ -26,6 +26,10 @@ const props = defineProps({
     type: [String, Array],
     default: null,
   },
+  off: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 const emit = defineEmits(['update:modelValue'])
@@ -41,6 +45,7 @@ const emit = defineEmits(['update:modelValue'])
         :type="type"
         :value="modelValue"
         @input="e => emit('update:modelValue', e.target.value)"
+        :autocomplete="off"
         :placeholder="placeholder"
         :class="[
           'w-full px-4 py-2 border rounded-md focus:ring-2 focus:outline-none transition-all duration-300',
