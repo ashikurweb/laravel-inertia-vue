@@ -1,5 +1,7 @@
 <script setup>
 import { useForm } from '@inertiajs/vue3';
+import TextInput from '../Components/TextInput.vue';
+
 
 const form = useForm({
     name: '',
@@ -22,75 +24,47 @@ const formSubmit = () => {
         <!-- Form Section -->
         <form @submit.prevent="formSubmit">
           <!-- Name Field -->
-          <div class="mb-4">
-            <label for="name" class="block text-base font-semibold mb-2 text-gray-600">Full Name</label>
-            <input
-              type="text"
-              id="name"
-              v-model="form.name"
-              :class="[
-                    'w-full px-4 py-2 border rounded-md focus:ring-2 focus:outline-none transition-all duration-300',
-                    form.errors.name ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-indigo-500'
-              ]"
-              placeholder="Enter your name"
+          <TextInput
+            v-model="form.name"
+            label="Full Name"
+            id="name"
+            placeholder="Enter your name"
+            :error="form.errors.name"
             />
-            <!-- Error Message -->
-            <small v-if="form.errors.name" class="text-red-500 mt-1">{{ form.errors.name }}</small>
-          </div>
   
           <!-- Email Field -->
-          <div class="mb-4">
-            <label for="email" class="block text-base font-semibold mb-2 text-gray-600">Email Address</label>
-            <input
-              type="email"
-              id="email"
-              v-model="form.email"
-              :class="[
-                    'w-full px-4 py-2 border rounded-md focus:ring-2 focus:outline-none transition-all duration-300',
-                    form.errors.email ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-indigo-500'
-                ]"
-              placeholder="Enter your email"
+          <TextInput
+            v-model="form.email"
+            type="email"
+            label="Email Address"
+            id="email"
+            placeholder="Enter your email"
+            :error="form.errors.email"
             />
-            <!-- Error Message -->
-            <small v-if="form.errors.email" class="text-red-500 mt-1">{{ form.errors.email }}</small>
-          </div>
   
           <!-- Password Field -->
-          <div class="mb-4">
-            <label for="password" class="block text-base font-semibold mb-2 text-gray-600">Password</label>
-            <input
-              type="password"
-              id="password"
-              v-model="form.password"
-              :class="[
-                    'w-full px-4 py-2 border rounded-md focus:ring-2 focus:outline-none transition-all duration-300',
-                    form.errors.password ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-indigo-500'
-                ]"
-              placeholder="Enter your password"
+          <TextInput
+            v-model="form.password"
+            type="password"
+            label="Password"
+            id="password"
+            placeholder="Enter your password"
+            :error="form.errors.password"
             />
-            <!-- Error Message -->
-            <small v-if="form.errors.password" class="text-red-500 mt-1">{{ form.errors.password }}</small>
-          </div>
   
           <!-- Confirm Password Field -->
-          <div class="mb-6">
-            <label for="password_confirmation" class="block text-base font-semibold mb-2 text-gray-600">Confirm Password</label>
-            <input
-              type="password"
-              id="password_confirmation"
-              v-model="form.password_confirmation"
-              :class="[
-                    'w-full px-4 py-2 border rounded-md focus:ring-2 focus:outline-none transition-all duration-300',
-                    form.errors.password ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-indigo-500'
-              ]"
-              placeholder="Confirm your password"
+          <TextInput
+            v-model="form.password_confirmation"
+            type="password"
+            label="Confirm Password"
+            id="password_confirmation"
+            placeholder="Confirm your password"
             />
-          </div>
   
           <!-- Submit Button -->
           <button
             type="submit"
-            class="w-full py-2 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-500 transition duration-200 flex justify-center items-center gap-2"
+            class="w-full py-3 mt-6 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-500 transition duration-200 flex justify-center items-center gap-2"
             :disabled="form.processing"
           >
             <svg 
