@@ -20,7 +20,7 @@
 
       <!-- Action Button -->
       <div class="flex items-center space-x-3">
-        <Link :href="route('register')" class="hidden md:inline-flex items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-500 transition">
+        <Link :href="route('login')" class="hidden md:inline-flex items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-500 transition">
           <i class="fa-solid fa-user-tie mr-2"></i>
           My Account
         </Link>

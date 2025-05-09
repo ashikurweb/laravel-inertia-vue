@@ -1,36 +1,28 @@
 <script setup>
 import { useForm } from '@inertiajs/vue3';
 import TextInput from '../Components/TextInput.vue';
+import Checkbox from '../Components/Checkbox.vue';
 
 
 const form = useForm({
-    name: '',
     email: '',
     password: '',
-    password_confirmation: '',
+    remember: false,
 });
 
 const formSubmit = () => {
-    form.post(route('register'));
+    form.post(route('login'));
 }
 </script>
 
 <template>
-    <Head title="Register"/>
+    <Head title="Login"/>
     <div class="mt-10 flex justify-center items-center py-10">
       <div class="max-w-xl w-full bg-white shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-lg p-8">
-        <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Create an Account</h2>
+        <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Weolcome Back</h2>
   
         <!-- Form Section -->
         <form @submit.prevent="formSubmit">
-          <!-- Name Field -->
-          <TextInput
-            v-model="form.name"
-            label="Full Name"
-            id="name"
-            placeholder="Enter your name"
-            :error="form.errors.name"
-            />
   
           <!-- Email Field -->
           <TextInput
@@ -51,15 +43,20 @@ const formSubmit = () => {
             placeholder="Enter your password"
             :error="form.errors.password"
             />
-  
-          <!-- Confirm Password Field -->
-          <TextInput
-            v-model="form.password_confirmation"
-            type="password"
-            label="Confirm Password"
-            id="password_confirmation"
-            placeholder="Confirm your password"
+
+         <!-- Updated Checkbox and Forgot Password Section -->
+        <div class="flex items-center justify-between mt-4">
+        <div class="flex items-center">
+            <Checkbox
+            v-model="form.remember"
+            label="Remember me"
             />
+        </div>
+        
+        <div class="flex items-center">
+            <a class="text-sm text-indigo-600 hover:text-indigo-500 hover:underline cursor-pointer">Forgot Password?</a>
+        </div>
+        </div>
   
           <!-- Submit Button -->
           <button
@@ -77,7 +74,7 @@ const formSubmit = () => {
               <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
               <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
-            <span>{{ form.processing ? 'Processing...' : 'Register' }}</span>
+            <span>{{ form.processing ? 'Processing...' : 'Login' }}</span>
           </button>
         </form>
   
@@ -85,7 +82,7 @@ const formSubmit = () => {
         <div class="mt-6 text-center text-base font-semibold text-gray-600">
           <p>
             Already have an account? 
-            <Link :href="route('login')" class="text-indigo-600 hover:text-indigo-500 hover:underline">Login</Link>
+            <Link :href="route('register')" class="text-indigo-600 hover:text-indigo-500 hover:underline">Register</Link>
           </p>
         </div>
       </div>
