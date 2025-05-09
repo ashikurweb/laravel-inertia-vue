@@ -1,21 +1,18 @@
 <?php
 
+use App\Http\Controllers\AuthenticatedSessionController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
-Route::get('/', function () {
-    sleep(1);
-    return Inertia::render('Home');
-})->name('home');
+Route::inertia('/', 'Home')->name('home');
 
-Route::get('/about', function () {
-    sleep(1); 
-    return Inertia::render('About', [
-        'name' => 'Jeffery Way',
-    ]);
-})->name('about');
+Route::controller(RegisterController::class)->group(function () {
+   Route::get('register',  'create')->name('register');
+   Route::post('register', 'store'); 
+});
 
-Route::get('/scroll-prevention', function () {
-    sleep(1);
-    return Inertia::render('ScrollPrevention');
-})->name('scroll.prevention');
+Route::controller(AuthenticatedSessionController::class)->group(function () {
+    Route::get('login',   'create')->name('login');
+    Route::post('login',  'store');
+    Route::post('logout', 'destroy')->name('logout');
+});
