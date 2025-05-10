@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class AuthenticatedSessionController extends Controller
 {
     public function create() {
+        sleep(2);
         return inertia('Auth/Login');
     }
 
@@ -19,7 +21,7 @@ class AuthenticatedSessionController extends Controller
 
         if (Auth::attempt( $credentials, $remember )) {
             $request->session()->regenerate();
-            return redirect()->intended(route('home'));
+            return redirect()->intended(route('dashboard'));
         }
 
         return back()->withErrors([
@@ -27,10 +29,4 @@ class AuthenticatedSessionController extends Controller
         ])->onlyInput('email');
     }
 
-    public function destroy(Request $request) {
-        Auth::guard('web')->logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect()->route('home');
-    }
 }
