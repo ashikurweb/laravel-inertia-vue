@@ -27,6 +27,7 @@
         <!-- User Dropdown Menu -->
         <div class="relative group">
           <button class="flex items-center space-x-1 px-4 py-2 bg-lime-100/90 text-lime-500 text-sm font-medium rounded-md focus:outline-none">
+            <img :src="$page.props.auth.user.image ? ('images/users/' + $page.props.auth.user.image): 'assets/image/default.png'" alt="" class="w-8 h-8 rounded-full object-cover mr-2">
             <span>{{ $page.props.auth.user.name }}</span>
             <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>

@@ -2,13 +2,22 @@
 import { useForm } from '@inertiajs/vue3';
 import TextInput from '../Components/TextInput.vue';
 
+const MAX_FILE_SIZE = 2 * 1024 * 1024;
+const ALLOWED_TYPES = ['image/png', 'image/jpeg', 'image/jpg', 'image/gif'];
 
 const form = useForm({
     name: '',
     email: '',
     password: '',
     password_confirmation: '',
+    image: '',
+    preview: '',
 });
+
+const change = (e) => {
+    form.image   = e.target.files[0];
+    form.preview = URL.createObjectURL(e.target.files[0]);
+}
 
 const formSubmit = () => {
     form.post(route('register'));
@@ -18,11 +27,23 @@ const formSubmit = () => {
 <template>
     <Head title="Register"/>
     <div class="mt-10 flex justify-center items-center py-10">
-      <div class="max-w-xl w-full bg-white shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-lg p-8">
-        <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Create an Account</h2>
-  
+      <div class="max-w-xl w-full bg-white shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-lg p-8">  
         <!-- Form Section -->
-        <form @submit.prevent="formSubmit">
+        <form @submit.prevent="formSubmit" enctype="multipart/form-data">
+          <!-- Image Field -->
+          <div class="grid place-items-center">
+            <div class="relative w-28 h-28 overflow-hidden ring-2 ring-violet-300 rounded-full">
+              <label for="image" class="absolute inset-0 grid content-end cursor-pointer">
+                <input type="file" @input="change" id="image" class="hidden">
+                <span class="bg-white/70 pb-2 text-center text-sm font-semibold text-red-600">Avatar</span>
+                <img :src="form.preview || '/assets/image/avatar.png'" class="w-28 h-28 object-cover rounded-full" alt="Avatar Preview">
+              </label>
+            </div>
+            <p class="text-xs text-gray-500 mt-1">Allowed JPG, GIF or PNG. Max size of 2MB</p>
+            <p v-if="form.errors.image" class="text-red-500 mt-1 text-xs">{{ form.errors.image }}</p>
+          </div>
+
+
           <!-- Name Field -->
           <TextInput
             v-model="form.name"
