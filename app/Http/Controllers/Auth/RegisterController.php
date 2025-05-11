@@ -19,11 +19,11 @@ class RegisterController extends Controller
 
     public function store(RegisterRequest $request)
     {
-        // sleep(2);
+        sleep(2);
         
         $fields = $request->validated();
         $fields['image'] = $this->imageUpload($request);
-
+        
         $user = $this->createUser($fields);
         $this->loginUser($user);
 
@@ -41,11 +41,11 @@ class RegisterController extends Controller
     }
 
     private function imageUpload ( Request $request ) {
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            return Storage::putFile('images', $image);
+        if ( $request->hasFile('image') ) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('images/users'), $imageName);
+            return $imageName;
         }
-    
         return null;
     }
 }
