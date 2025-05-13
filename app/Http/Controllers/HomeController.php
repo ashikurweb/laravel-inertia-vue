@@ -11,7 +11,6 @@ class HomeController extends Controller
     public function index () 
     {
         $users = User::paginate(10);
-        sleep(2);
         return Inertia::render('Home', ['users' => $users]);
     }
 }
