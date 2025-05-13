@@ -10,12 +10,10 @@ use Illuminate\Support\Facades\Auth;
 class AuthenticatedSessionController extends Controller
 {
     public function create() {
-        sleep(2);
         return inertia('Auth/Login');
     }
 
     public function store ( LoginRequest $request ) {
-        sleep(2);
         $credentials = $request->only('email', 'password');
         $remember    = $request->has('remember');
 

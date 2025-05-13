@@ -1,3 +1,11 @@
+<script setup>
+import { ref } from 'vue';
+
+const isMobileMenuOpen = ref(false);
+const isMobileDropdownOpen = ref(false);
+
+</script>
+
 <template>
   <Head>
     <title>My App</title>
@@ -188,14 +196,6 @@
     <slot />
   </main>
 </template>
-
-<script setup>
-import { ref } from 'vue';
-
-const isMobileMenuOpen = ref(false);
-const isMobileDropdownOpen = ref(false);
-
-</script>
 
 <style scoped>
 .transition-all {

@@ -1,5 +1,6 @@
 <script setup>
 import Paginator from './Components/Paginator.vue';
+import FlashBanner from './Components/FlashBanner.vue';
 
 
 defineProps({
@@ -19,6 +20,7 @@ const getDate = (date) =>
 </script>
 
 <template>
+    <FlashBanner/>
     <h1 class="text-5xl font-bold text-gray-600 mb-8">
         Home Page
     </h1>
