@@ -8,9 +8,22 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index () 
+    public function index ( Request $request ) 
     {
-        $users = User::paginate(10);
-        return Inertia::render('Home', ['users' => $users]);
+        $filters = $request->only('search');
+
+        $users = User::query()
+            ->when($filters['search'] ?? false, function ($query, $search) {
+                $query->where('name', 'like', "%{$search}%")
+                ->orWhere('email', 'like', "%{$search}%");
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate(10)
+            ->withQueryString();
+
+        return Inertia::render('Home', [
+            'users'   => $users,
+            'filters' => $filters,
+        ]);
     }
 }
