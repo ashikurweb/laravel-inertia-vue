@@ -54,7 +54,7 @@ const formSubmit = () => {
         </div>
         
         <div class="flex items-center">
-            <a class="text-sm text-indigo-600 hover:text-indigo-500 hover:underline cursor-pointer">Forgot Password?</a>
+            <a class="text-sm text-indigo-600 hover:text-indigo-500 font-semibold hover:underline cursor-pointer">Forgot Password?</a>
         </div>
         </div>
   

@@ -13,21 +13,18 @@ class RegisterController extends Controller
 {
     public function create()
     {
-        sleep(2);
         return inertia('Auth/Register');
     }
 
     public function store(RegisterRequest $request)
     {
-        sleep(2);
-        
         $fields = $request->validated();
         $fields['image'] = $this->imageUpload($request);
         
         $user = $this->createUser($fields);
         $this->loginUser($user);
 
-        return to_route('dashboard');
+        return to_route('dashboard')->with('success', 'Registered successfully');
     }
 
     private function createUser(array $fields)

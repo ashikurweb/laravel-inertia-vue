@@ -10,12 +10,12 @@ class LogoutController extends Controller
 {
     public function __invoke(Request $request)
     {
-        sleep(2);
+        sleep(1);
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('home');
+        return to_route('home')->with('error', 'Logged out successfully');
     }
 }
 
