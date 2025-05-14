@@ -5,8 +5,9 @@ import { ref, watch } from 'vue';
 import { router } from '@inertiajs/vue3';
 import { debounce } from 'lodash';
 
-defineProps({
+const props = defineProps({
   users: Object,
+  can  : Object, 
 });
 
 const search = ref('');
@@ -63,7 +64,7 @@ const getDate = (date) =>
               <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Name</th>
               <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Email</th>
               <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Registration Date</th>
-              <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Actions</th>
+              <th v-if="can.deleteUser" class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Actions</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-gray-200">
@@ -87,13 +88,13 @@ const getDate = (date) =>
               </td>
               <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{{ user.email }}</td>
               <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{{ getDate(user.created_at) }}</td>
-              <td class="px-4 py-3 whitespace-nowrap text-sm font-medium">
+              <td v-if="can.deleteUser" class="px-4 py-3 whitespace-nowrap text-sm font-medium">
                 <a href="#" class="text-indigo-600 hover:text-indigo-900 mr-3">
                   <i class="fa-regular fa-pen-to-square"></i>
                 </a>
-                <a href="#" class="text-red-600 hover:text-red-900">
+                <button type="button" class="text-red-600 hover:text-red-900">
                   <i class="fa-regular fa-trash-can"></i>
-                </a>
+                </button>
               </td>
             </tr>
           </tbody>

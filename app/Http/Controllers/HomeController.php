@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -24,6 +25,11 @@ class HomeController extends Controller
         return Inertia::render('Home', [
             'users'   => $users,
             'filters' => $filters,
+            'can'     => [
+                'deleteUser' => Auth::check()
+                    ? Auth::user()->can('delete', User::class)
+                    : false,
+            ],
         ]);
     }
 }
