@@ -12,7 +12,7 @@
     @inertiaHead
     @routes
 </head>
-<body class="bg-home-light dark:bg-home-dark">
+<body class="bg-home-light">
     @inertia
 </body>
 </html>
