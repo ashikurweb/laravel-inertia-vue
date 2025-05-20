@@ -10,7 +10,7 @@ const isMobileDropdownOpen = ref(false);
   <Head>
     <title>My App</title>
   </Head>
-  <header class="bg-white shadow-sm sticky top-0 z-50">
+  <header class=" shadow-sm sticky top-0 z-50">
     <div class="container mx-auto max-w-7xl px-4 sm:px-6 py-4 flex items-center justify-between">
       <!-- Logo + Brand -->
       <div class="flex items-center space-x-3">
@@ -23,7 +23,7 @@ const isMobileDropdownOpen = ref(false);
       <nav class="hidden md:flex items-center space-x-6">
         <Link 
           :href="route('home')" 
-          class="text-sm text-gray-600 hover:text-primary transition" 
+          class="text-sm text-default-100 hover:text-primary transition" 
           :class="{'bg-slate-100 px-3 py-2 rounded-md text-primary font-medium': $page.component === 'Home'}"
         >
           Home
@@ -198,6 +198,11 @@ const isMobileDropdownOpen = ref(false);
 </template>
 
 <style scoped>
+
+body {
+  background-color: red;
+}
+
 .transition-all {
   transition-property: all;
 }

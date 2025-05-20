@@ -11,4 +11,18 @@
 }
 
 
+@layer utilities {
+    .bg-home-light {
+      background-image: url('/assets/image/home/home-light.png');
+      @apply bg-cover bg-center;
+    }
+    .dark\:bg-home-dark {
+      background-image: url('/assets/image/home/home-dark.png');
+    }
+
+    .text-default-100 {
+        @apply text-slate-100 dark:text-slate-500;
+    }
+  }
+
 
